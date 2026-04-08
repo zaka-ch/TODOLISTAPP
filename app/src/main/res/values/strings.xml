@@ -34,4 +34,5 @@
     <string name="Tasks">Tasks</string>
     <string name="MyTasks">MyTasks</string>
     <string name="MyTime">MyTime</string>
+    <string name="plus">+</string>
 </resources>

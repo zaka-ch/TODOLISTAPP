@@ -2,8 +2,8 @@ package com.example.todolist3;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LandingPage extends AppCompatActivity {
 
     LinearLayout TaskContainer;
-    ImageButton addButton;
+    Button addButton;
 
 
     @SuppressLint("SetTextI18n")
@@ -22,7 +22,7 @@ public class LandingPage extends AppCompatActivity {
         setContentView(R.layout.landing);
 
         TaskContainer = findViewById(R.id.TasksContainer);
-        addButton = findViewById(R.id.AddTaskButton);
+        addButton = findViewById(R.id.Button);
 
 
         addButton.setOnClickListener(v -> {

@@ -17,19 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/AddTaskButton"
-        style="@android:style/Widget.DeviceDefault.Light.ImageButton"
-        android:layout_width="80dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="520dp"
-        android:background="#2196F3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        tools:srcCompat="@android:drawable/ic_input_add" />
-
     <TextClock
         android:id="@+id/Clock"
         android:layout_width="wrap_content"
@@ -39,12 +26,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MyTasks" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/white"
+        app:itemIconTint="@color/brand_blue"
+        app:itemTextColor="@color/text_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
     <LinearLayout
         android:id="@+id/TasksContainer"
         android:layout_width="410dp"
         android:layout_height="389dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="118dp"></LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Clock">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Button"
+        android:layout_width="80dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="299dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:textSize="11sp"
+        app:icon="@drawable/outline_add_2_24"
+        app:iconPadding="0dp"
+        app:iconSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TasksContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
