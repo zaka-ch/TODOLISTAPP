@@ -1,5 +1,6 @@
 package com.example.todolist3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        Intent intent = new Intent(MainActivity.this, LandingPage.class );
         username = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword2);
         loginButton = findViewById(R.id.LoginButton);
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
-                   // kma yzid zaka page jdida ndiro navigate
+                   startActivity(intent);
                 }
             }
         });

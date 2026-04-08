@@ -32,4 +32,6 @@
     <string name="Welcome">Welcome Back</string>
     <string name="LogoDesc">A logo</string>
     <string name="Tasks">Tasks</string>
+    <string name="MyTasks">MyTasks</string>
+    <string name="MyTime">MyTime</string>
 </resources>
