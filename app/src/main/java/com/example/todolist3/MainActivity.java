@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword2);
         loginButton = findViewById(R.id.LoginButton);
-
+        //Check pull req
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
