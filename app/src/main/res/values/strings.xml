@@ -32,4 +32,12 @@
     <string name="Welcome">Welcome Back</string>
     <string name="LogoDesc">A logo</string>
     <string name="Tasks">Tasks</string>
+    <string name="MyTasks">MyTasks</string>
+    <string name="MyTime">MyTime</string>
+    <string name="plus">+</string>
+    <string name="Settingstext" />
+    <string name="Settings">SettingsPage</string>
+    <string name="Upcoming">UpcomingPage</string>
+    <string name="Button" />
+    <string name="add_task">Add Task</string>
 </resources>
