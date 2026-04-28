@@ -1,6 +1,7 @@
 package com.example.todolist3;
-import android.content.Intent;
+
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -10,18 +11,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-
-
 public class MainActivity extends AppCompatActivity {
 
     EditText username;
     EditText password;
     Button loginButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -30,14 +27,17 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Intent intent = new Intent(MainActivity.this, LandingPage.class );
+
         username = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword2);
         loginButton = findViewById(R.id.LoginButton);
-        //Check pull req
-        loginButton.setOnClickListener(v -> {
-            if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
-               startActivity(intent);
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
+                   // kma yzid zaka page jdida ndiro navigate
+                }
             }
         });
 
