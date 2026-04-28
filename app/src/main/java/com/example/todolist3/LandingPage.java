@@ -1,5 +1,6 @@
 package com.example.todolist3;
-
+import androidx.core.content.ContextCompat;
+import android.graphics.Color;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,44 +58,64 @@ public class LandingPage extends AppCompatActivity {
 
         addButton.setOnClickListener(v -> {
 
+
+            LinearLayout.LayoutParams params =
+                    new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+
+
+
+            params.setMargins(100, 40, 0, 0);
+
             LinearLayout row = new LinearLayout(this);
-            row.setPadding(16,16,16,16);
             CheckBox NewCheckBox = new CheckBox(this);
             Button delete = new Button(this);
             Button edit = new Button(this);
 
+            row.setPadding(40, 25, 40, 25);
+            row.setOrientation(LinearLayout.HORIZONTAL);
+            row.setBackgroundResource(R.drawable.task_background);
+            row.setLayoutParams(params);
+
 
             NewCheckBox.setText("TestTask");
+            NewCheckBox.setTextColor(ContextCompat.getColor(this, R.color.white));
+            NewCheckBox.setPadding(10, 0, 0, 0);
+            NewCheckBox.setTextSize(18);
+            NewCheckBox.setTypeface(null, android.graphics.Typeface.BOLD);
+
             delete.setText("X");
-            delete.setTextColor(R.color.red);
+            delete.setTextSize(30);
+            delete.setTextColor(ContextCompat.getColor(this, R.color.red));
             delete.setBackgroundColor(android.graphics.Color.TRANSPARENT);
             delete.setOnClickListener(del -> TaskContainer.removeView(row));
-            edit.setText("Edit");
-            delete.setTextColor(R.color.blue);
+            edit.setText("EDIT");
+            edit.setTextSize(14);
+            edit.setTextColor(ContextCompat.getColor(this, R.color.white));
             edit.setBackgroundColor(android.graphics.Color.TRANSPARENT);
+            edit.setTypeface(null, android.graphics.Typeface.BOLD);
 
             edit.setOnClickListener(editing -> {
+                AlertDialog.Builder editTab = new AlertDialog.Builder(this);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Edit Task");
-
+                editTab.setTitle("Edit Task");
                 EditText input = new EditText(this);
                 input.setText(NewCheckBox.getText());
-                builder.setView(input);
-
-                builder.setPositiveButton("Save", (dialog, which) -> {
+                editTab.setView(input);
+                editTab.setPositiveButton("Save", (dialog, which) -> {
                     NewCheckBox.setText(input.getText().toString());
                 });
 
-                builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
-
-                builder.show();
+                editTab.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+                editTab.show();
             });
 
 
             row.addView(NewCheckBox);
-            row.addView(delete);
             row.addView(edit);
+            row.addView(delete);
             TaskContainer.addView(row);
         });
     }

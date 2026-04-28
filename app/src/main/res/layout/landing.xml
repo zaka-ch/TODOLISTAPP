@@ -9,8 +9,8 @@
         android:id="@+id/MyTasks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="10dp"
         android:text="@string/MyTasks"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MyTasks" />
 
@@ -40,12 +40,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
+
     <Button
         android:id="@+id/Button"
-        android:layout_width="80dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="77dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="72dp"
         android:layout_weight="1"
         android:contentDescription="@string/add_task"
         android:textSize="11sp"
@@ -57,12 +58,24 @@
 
     <LinearLayout
         android:id="@+id/TasksContainer"
-        android:layout_width="409dp"
-        android:layout_height="421dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_width="385dp"
+        android:layout_height="524dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Clock"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/Clock">
+
+    </LinearLayout>
+
+    <SearchView
+        android:layout_width="199dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/TasksContainer"
+        app:layout_constraintStart_toEndOf="@+id/MyTasks"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
