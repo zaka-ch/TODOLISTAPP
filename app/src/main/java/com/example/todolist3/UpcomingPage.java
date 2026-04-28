@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class UpcomingPage extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -23,7 +24,7 @@ public class UpcomingPage extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
 
-        /// NAVBAR Settings page
+
 
         bottomNavigationView.setSelectedItemId(R.id.navigation_upcoming);
 

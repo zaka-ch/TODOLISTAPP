@@ -34,8 +34,6 @@ public class LandingPage extends AppCompatActivity {
         addButton = findViewById(R.id.Button);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        /// NAVBAR Landing page
-
         bottomNavigationView.setSelectedItemId(R.id.navigation_tasks);
 
         bottomNavigationView.setOnItemSelectedListener(MenuItem -> {
@@ -81,19 +79,19 @@ public class LandingPage extends AppCompatActivity {
 
 
             NewCheckBox.setText("TestTask");
-            NewCheckBox.setTextColor(ContextCompat.getColor(this, R.color.white));
+            NewCheckBox.setTextColor(ContextCompat.getColor(this, R.color.onPrimary));
             NewCheckBox.setPadding(10, 0, 0, 0);
             NewCheckBox.setTextSize(18);
             NewCheckBox.setTypeface(null, android.graphics.Typeface.BOLD);
 
             delete.setText("X");
             delete.setTextSize(30);
-            delete.setTextColor(ContextCompat.getColor(this, R.color.red));
+            delete.setTextColor(ContextCompat.getColor(this, R.color.error));
             delete.setBackgroundColor(android.graphics.Color.TRANSPARENT);
             delete.setOnClickListener(del -> TaskContainer.removeView(row));
             edit.setText("EDIT");
             edit.setTextSize(14);
-            edit.setTextColor(ContextCompat.getColor(this, R.color.white));
+            edit.setTextColor(ContextCompat.getColor(this, R.color.onPrimary));
             edit.setBackgroundColor(android.graphics.Color.TRANSPARENT);
             edit.setTypeface(null, android.graphics.Typeface.BOLD);
 

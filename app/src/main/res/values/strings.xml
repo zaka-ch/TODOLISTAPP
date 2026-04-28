@@ -40,4 +40,6 @@
     <string name="Upcoming">UpcomingPage</string>
     <string name="Button" />
     <string name="add_task">Add Task</string>
+    <string name="DarkModeText">DarkMode</string>
+    <string name="DarkMode">Darkmode</string>
 </resources>
