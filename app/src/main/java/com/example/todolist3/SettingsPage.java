@@ -3,6 +3,7 @@ package com.example.todolist3;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class SettingsPage extends AppCompatActivity {
 
+    Button LogOut;
     BottomNavigationView bottomNavigationView;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch DarkModeSwitch;
@@ -26,6 +28,12 @@ public class SettingsPage extends AppCompatActivity {
         DarkModeSwitch = findViewById(R.id.switchTheme);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.navigation_settings);
+        LogOut = findViewById(R.id.buttonLogout);
+
+
+        LogOut.setOnClickListener(v -> {
+            startActivity(new Intent(SettingsPage.this, MainActivity.class));
+        });
 
 
         DarkModeSwitch.setOnCheckedChangeListener(((buttonView, isChecked) -> {
@@ -44,12 +52,11 @@ public class SettingsPage extends AppCompatActivity {
 
             if(id == R.id.navigation_tasks){
                 startActivity(new Intent(SettingsPage.this, LandingPage.class));
+                return true;
             } else if (id == R.id.navigation_upcoming) {
                 startActivity(new Intent(SettingsPage.this, UpcomingPage.class));
                 return true;
             } else return id == R.id.navigation_settings;
-
-            return false;
         });
     }
 }

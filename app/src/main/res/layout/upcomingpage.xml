@@ -25,7 +25,7 @@
         android:layout_marginBottom="4dp"
         android:background="@color/background"
         app:itemIconTint="@color/onPrimaryContainer"
-        app:itemTextColor="@color/onSurfaceVariant"
+        app:itemTextColor="@color/design_default_color_on_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -26,6 +26,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MyTasks" />
 
+    <SearchView
+        android:layout_width="199dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/MyTasks"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ScrollView so tasks don't overflow the fixed container -->
+    <ScrollView
+        android:id="@+id/TasksScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Adesp"
+        app:layout_constraintBottom_toTopOf="@+id/AddButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Clock">
+
+        <LinearLayout
+            android:id="@+id/TasksContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/AddButton"
+        android:layout_width="77dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/add_task"
+        android:textSize="11sp"
+        app:icon="@drawable/outline_add_2_24"
+        app:iconPadding="0dp"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
@@ -36,46 +80,7 @@
         app:itemTextColor="@color/outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
-
-
-    <Button
-        android:id="@+id/Button"
-        android:layout_width="77dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="60dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/add_task"
-        android:textSize="11sp"
-        app:icon="@drawable/outline_add_2_24"
-        app:iconPadding="0dp"
-        app:iconSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TasksContainer" />
-
-    <LinearLayout
-        android:id="@+id/TasksContainer"
-        android:layout_width="354dp"
-        android:layout_height="380dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Clock">
-
-    </LinearLayout>
-
-    <SearchView
-        android:layout_width="199dp"
-        android:layout_height="81dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/TasksContainer"
-        app:layout_constraintStart_toEndOf="@+id/MyTasks"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

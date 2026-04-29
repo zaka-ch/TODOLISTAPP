@@ -42,4 +42,11 @@
     <string name="add_task">Add Task</string>
     <string name="DarkModeText">DarkMode</string>
     <string name="DarkMode">Darkmode</string>
+    <string name="SaveText">Save</string>
+    <string name="Whatson">What\'s on                                                 your minde?</string>
+    <string name="WhatsOn">Whats On \n  Your Mind?</string>
+    <string name="newTask">NewTask</string>
+    <string name="Close">Close</string>
+    <string name="Desc">Desp</string>
+    <string name="CloseButton">cLOSE\n</string>
 </resources>
