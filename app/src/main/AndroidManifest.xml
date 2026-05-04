@@ -16,13 +16,15 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddTask"/>
-        <activity android:name=".LandingPage" />
-        <activity android:name=".UpcomingPage" />
-        <activity android:name=".SettingsPage" />
+        <activity android:name=".LandingPage" android:exported="false" />
+        <activity android:name=".SettingsPage" android:exported="false" />
+        <activity android:name=".UpcomingPage" android:exported="false" />
+        <activity android:name=".Landing" android:exported="false" />
+        <activity android:name=".NewTask" android:exported="false" />
     </application>
 
 </manifest>

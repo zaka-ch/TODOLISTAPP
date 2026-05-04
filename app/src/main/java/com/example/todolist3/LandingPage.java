@@ -1,102 +1,75 @@
-    package com.example.todolist3;
-    import android.annotation.SuppressLint;
-    import android.content.Intent;
-    import android.os.Bundle;
-    import android.widget.Button;
-    import android.widget.CheckBox;
-    import android.widget.LinearLayout;
-    import android.widget.TextView;
-    import androidx.activity.result.ActivityResultLauncher;
-    import androidx.activity.result.contract.ActivityResultContracts;
-    import androidx.appcompat.app.AppCompatActivity;
-    import com.google.android.material.bottomnavigation.BottomNavigationView;
+package com.example.todolist3;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
 
-    public class LandingPage extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-        Button addButton;
-        BottomNavigationView bottomNavigationView;
-        LinearLayout taskContainer;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
 
-        // Replaces startActivityForResult (which is deprecated)
-        private final ActivityResultLauncher<Intent> addTaskLauncher =
-                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        Intent data = result.getData();
+public class LandingPage extends AppCompatActivity {
 
-                        // This is where the two getters' values arrive
-                        String title    = data.getStringExtra("taskTitle");
-                        String deadline = data.getStringExtra("taskDeadline");
+    RecyclerView rvTasks;
+    Button addButton;
+    BottomNavigationView bottomNavigationView;
+    public static List<Task> tasks = new ArrayList<>();
+    TaskAdapter taskAdapter;
 
-                        addTaskToList(title, deadline);
-                    }
-                });
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.landing);
 
+        rvTasks = findViewById(R.id.rvTasks);
+        addButton = findViewById(R.id.Button);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-
-        @SuppressLint({"SetTextI18n", "ResourceAsColor"})
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.landing);
-            addButton = findViewById(R.id.AddButton);
-            bottomNavigationView = findViewById(R.id.bottomNavigationView);
-            bottomNavigationView.setSelectedItemId(R.id.navigation_tasks);
-            taskContainer = findViewById(R.id.TasksContainer);
-
-
-            bottomNavigationView.setOnItemSelectedListener(MenuItem -> {
-               int id = MenuItem.getItemId();
-
-               if(id == R.id.navigation_tasks){
-                   return true;
-               } else if (id == R.id.navigation_upcoming) {
-                   startActivity(new Intent(LandingPage.this, UpcomingPage.class));
-                   return true;
-               } else if (id == R.id.navigation_settings) {
-                   startActivity(new Intent(LandingPage.this, SettingsPage.class));
-                   return true;
-               }
-
-               return false;
-            });
-
-
-
-            addButton.setOnClickListener(v -> {
-                addTaskLauncher.launch(new Intent(LandingPage.this, AddTask.class));
-            });
+        if (tasks.isEmpty()) {
+            tasks.add(new Task("Wake up"));
+            tasks.add(new Task("Go to gym"));
+            tasks.add(new Task("Sleep"));
         }
 
-        @SuppressLint("SetTextI18n")
-        private void addTaskToList(String title, String deadline) {
-            LinearLayout row = new LinearLayout(this);
-            row.setOrientation(LinearLayout.HORIZONTAL);
-            row.setPadding(16, 16, 16, 16);
-            row.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            ));
+        taskAdapter = new TaskAdapter(tasks, this);
+        rvTasks.setAdapter(taskAdapter);
+        rvTasks.setLayoutManager(new LinearLayoutManager(this));
 
-            CheckBox checkBox = new CheckBox(this);
+        addButton.setOnClickListener(v -> {
+            startActivity(new Intent(LandingPage.this, NewTask.class));
+        });
 
-            TextView taskView = new TextView(this);
-            taskView.setText(title + (deadline != null && !deadline.isEmpty() ? "  •  " + deadline : ""));
-            taskView.setTextSize(16);
+        /// NAVBAR Landing page
+        bottomNavigationView.setSelectedItemId(R.id.navigation_tasks);
 
-            Button deleteBtn = new Button(this);
-            deleteBtn.setText("Delete");
+        bottomNavigationView.setOnItemSelectedListener(MenuItem -> {
+            int id = MenuItem.getItemId();
 
-            deleteBtn.setOnClickListener(v -> {
-                taskContainer.removeView(row);
-            });
+            if(id == R.id.navigation_tasks){
+                return true;
+            } else if (id == R.id.navigation_upcoming) {
+                startActivity(new Intent(LandingPage.this, UpcomingPage.class));
+                return true;
+            } else if (id == R.id.navigation_settings) {
+                startActivity(new Intent(LandingPage.this, SettingsPage.class));
+                return true;
+            }
 
-            row.addView(checkBox);
-            row.addView(taskView);
-            row.addView(deleteBtn);
-
-            taskContainer.addView(row);
-        }
-
+            return false;
+        });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (taskAdapter != null) {
+            taskAdapter.notifyDataSetChanged();
+            rvTasks.scrollToPosition(tasks.size() - 1);
+        }
+    }
+}

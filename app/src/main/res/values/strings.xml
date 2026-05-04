@@ -32,21 +32,8 @@
     <string name="Welcome">Welcome Back</string>
     <string name="LogoDesc">A logo</string>
     <string name="Tasks">Tasks</string>
-    <string name="MyTasks">MyTasks</string>
-    <string name="MyTime">MyTime</string>
-    <string name="plus">+</string>
-    <string name="Settingstext" />
-    <string name="Settings">SettingsPage</string>
-    <string name="Upcoming">UpcomingPage</string>
-    <string name="Button" />
+    <string name="MyTasks">My Tasks</string>
     <string name="add_task">Add Task</string>
-    <string name="DarkModeText">DarkMode</string>
-    <string name="DarkMode">Darkmode</string>
-    <string name="SaveText">Save</string>
-    <string name="Whatson">What\'s on                                                 your minde?</string>
-    <string name="WhatsOn">Whats On \n  Your Mind?</string>
-    <string name="newTask">NewTask</string>
-    <string name="Close">Close</string>
-    <string name="Desc">Desp</string>
-    <string name="CloseButton">cLOSE\n</string>
+    <string name="Settings">Settings</string>
+    <string name="Upcoming">Upcoming</string>
 </resources>

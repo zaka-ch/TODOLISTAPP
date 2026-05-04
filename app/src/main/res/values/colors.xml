@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="primary">#6750A4</color>
-    <color name="onPrimary">#FFFFFF</color>
-    <color name="primaryContainer">#CBC0E6</color>
-    <color name="onPrimaryContainer">#201933</color>
-    <color name="secondary">#625B71</color>
-    <color name="onSecondary">#FFFFFF</color>
-    <color name="secondaryContainer">#DCD8E6</color>
-    <color name="onSecondaryContainer">#2C2933</color>
-    <color name="tertiary">#7D5260</color>
-    <color name="onTertiary">#FFFFFF</color>
-    <color name="tertiaryContainer">#E6CDD5</color>
-    <color name="onTertiaryContainer">#332227</color>
-    <color name="error">#B3261E</color>
-    <color name="onError">#FFFFFF</color>
-    <color name="errorContainer">#E6ACA9</color>
-    <color name="onErrorContainer">#330B09</color>
-    <color name="background">#fcfcfc</color>
-    <color name="onBackground">#323233</color>
-    <color name="surface">#fcfcfc</color>
-    <color name="onSurface">#323233</color>
-    <color name="surfaceVariant">#e0dee6</color>
-    <color name="onSurfaceVariant">#5e5c66</color>
-    <color name="outline">#8e8999</color>
-</resources>
+    <resources>
+        <color name="bg_gray">#F3F4F6</color>
+        <color name="brand_blue">#2563EB</color>
+        <color name="text_dark">#111827</color>
+        <color name="text_gray">#6B7280</color>
+        <color name="black">#000000</color>
+        <color name="white">#FFFFFF</color>
+        <color name
+            ="card_bg">#FFFFFF</color>
+    <color name="kinda_purble">#2196F3 </color>
+    <color name="input_field_bg">#F9FAFB</color>
+    </resources>

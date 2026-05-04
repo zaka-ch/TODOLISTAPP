@@ -1,62 +1,65 @@
 package com.example.todolist3;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
-
 public class SettingsPage extends AppCompatActivity {
 
-    Button LogOut;
     BottomNavigationView bottomNavigationView;
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    Switch DarkModeSwitch;
+    Button buttonLogout;
+    SwitchCompat switchDarkMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settingspage);
 
-        DarkModeSwitch = findViewById(R.id.switchTheme);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_settings);
-        LogOut = findViewById(R.id.buttonLogout);
+        buttonLogout = findViewById(R.id.buttonLogout);
+        switchDarkMode = findViewById(R.id.switchDarkMode);
 
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            switchDarkMode.setChecked(true);
+        }
 
-        LogOut.setOnClickListener(v -> {
-            startActivity(new Intent(SettingsPage.this, MainActivity.class));
+        switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
         });
 
 
-        DarkModeSwitch.setOnCheckedChangeListener(((buttonView, isChecked) -> {
-            if(isChecked){
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            }else{
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            }
-        }));
+        buttonLogout.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingsPage.this, MainActivity.class);
+            // Clear the activity stack so user can't go back
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        });
 
 
-
+        bottomNavigationView.setSelectedItemId(R.id.navigation_settings);
 
         bottomNavigationView.setOnItemSelectedListener(MenuItem -> {
             int id = MenuItem.getItemId();
 
             if(id == R.id.navigation_tasks){
                 startActivity(new Intent(SettingsPage.this, LandingPage.class));
-                return true;
             } else if (id == R.id.navigation_upcoming) {
                 startActivity(new Intent(SettingsPage.this, UpcomingPage.class));
                 return true;
             } else return id == R.id.navigation_settings;
+
+            return false;
         });
     }
 }
