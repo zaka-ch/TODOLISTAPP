@@ -32,4 +32,8 @@
     <string name="Welcome">Welcome Back</string>
     <string name="LogoDesc">A logo</string>
     <string name="Tasks">Tasks</string>
+    <string name="MyTasks">My Tasks</string>
+    <string name="add_task">Add Task</string>
+    <string name="Settings">Settings</string>
+    <string name="Upcoming">Upcoming</string>
 </resources>
