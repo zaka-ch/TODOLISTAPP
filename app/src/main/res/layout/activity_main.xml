@@ -58,6 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
+        android:autofillHints="@string/HintEmail"
         android:ems="10"
         android:hint="@string/HintEmail"
         android:inputType="textEmailAddress"
