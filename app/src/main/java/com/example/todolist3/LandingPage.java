@@ -30,12 +30,6 @@ public class LandingPage extends AppCompatActivity {
         addButton = findViewById(R.id.Button);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        if (tasks.isEmpty()) {
-            tasks.add(new Task("Wake up"));
-            tasks.add(new Task("Go to gym"));
-            tasks.add(new Task("Sleep"));
-        }
-
         taskAdapter = new TaskAdapter(tasks, this);
         rvTasks.setAdapter(taskAdapter);
         rvTasks.setLayoutManager(new LinearLayoutManager(this));
