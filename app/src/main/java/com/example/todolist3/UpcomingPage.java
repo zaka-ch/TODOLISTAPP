@@ -2,7 +2,6 @@ package com.example.todolist3;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,57 +12,58 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LandingPage extends AppCompatActivity {
+public class UpcomingPage extends AppCompatActivity {
 
-    RecyclerView rvTasks;
-    Button addButton;
     BottomNavigationView bottomNavigationView;
-    public static List<Task> tasks = new ArrayList<>();
+    RecyclerView rvUpcomingTasks;
     TaskAdapter taskAdapter;
+    List<Task> upcomingTasks;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.landing);
+        setContentView(R.layout.upcomingpage);
 
-        rvTasks = findViewById(R.id.rvTasks);
-        addButton = findViewById(R.id.Button);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        rvUpcomingTasks = findViewById(R.id.rvUpcomingTasks);
 
-        taskAdapter = new TaskAdapter(tasks, this);
-        rvTasks.setAdapter(taskAdapter);
-        rvTasks.setLayoutManager(new LinearLayoutManager(this));
-
-        addButton.setOnClickListener(v -> {
-            startActivity(new Intent(LandingPage.this, NewTask.class));
-        });
-
-        /// NAVBAR Landing page
-        bottomNavigationView.setSelectedItemId(R.id.navigation_tasks);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_upcoming);
 
         bottomNavigationView.setOnItemSelectedListener(MenuItem -> {
             int id = MenuItem.getItemId();
 
             if(id == R.id.navigation_tasks){
+                startActivity(new Intent(UpcomingPage.this, LandingPage.class));
                 return true;
             } else if (id == R.id.navigation_upcoming) {
-                startActivity(new Intent(LandingPage.this, UpcomingPage.class));
                 return true;
             } else if (id == R.id.navigation_settings) {
-                startActivity(new Intent(LandingPage.this, SettingsPage.class));
+                startActivity(new Intent(UpcomingPage.this, SettingsPage.class));
                 return true;
             }
 
             return false;
         });
+
+        loadUpcomingTasks();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (taskAdapter != null) {
-            taskAdapter.notifyDataSetChanged();
-            rvTasks.scrollToPosition(tasks.size() - 1);
+        loadUpcomingTasks();
+    }
+
+    private void loadUpcomingTasks() {
+        upcomingTasks = new ArrayList<>();
+        for (Task task : LandingPage.tasks) {
+            if (!task.isChecked()) {
+                upcomingTasks.add(task);
+            }
         }
+
+        taskAdapter = new TaskAdapter(upcomingTasks, this);
+        rvUpcomingTasks.setAdapter(taskAdapter);
+        rvUpcomingTasks.setLayoutManager(new LinearLayoutManager(this));
     }
 }
